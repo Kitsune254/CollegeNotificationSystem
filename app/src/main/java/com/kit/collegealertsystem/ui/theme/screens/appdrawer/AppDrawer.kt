@@ -2,6 +2,7 @@ package com.kit.collegealertsystem.ui.theme.screens.appdrawer
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -26,19 +27,27 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.kit.collegealertsystem.R
-import com.kit.collegealertsystem.ui.theme.screens.pages.AllDestinations
+import com.kit.collegealertsystem.navigation.AppNavHost
+import com.kit.collegealertsystem.navigation.ROUTE_ACADEMICS
+import com.kit.collegealertsystem.navigation.ROUTE_HOME
+import com.kit.collegealertsystem.navigation.ROUTE_SPORT
+//import com.kit.collegealertsystem.ui.theme.screens.pages.AllDestinations
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppDrawer(
+    navController: NavHostController,
     route: String,
     modifier: Modifier = Modifier,
-    navigateToHome: () -> Unit = {},
-    navigateToSettings: () -> Unit = {},
+//    navigateToHome: () -> Unit = {},
+//    navigateToSettings: () -> Unit = {},
     closeDrawer: () -> Unit = {}
 ) {
     ModalDrawerSheet(modifier = Modifier) {
@@ -51,15 +60,14 @@ fun AppDrawer(
                     style = MaterialTheme.typography.labelSmall
                 )
             },
-            selected = route == AllDestinations.HOME,
+            selected = false,
             onClick = {
-                navigateToHome()
+                navController.navigate(ROUTE_HOME)
                 closeDrawer()
             },
             icon = { Icon(imageVector = Icons.Default.Home, contentDescription = null) },
             shape = MaterialTheme.shapes.small
         )
-
         NavigationDrawerItem(
             label = {
                 Text(
@@ -67,9 +75,9 @@ fun AppDrawer(
                     style = MaterialTheme.typography.labelSmall
                 )
             },
-            selected = route == AllDestinations.ACADEMICS,
+            selected = true,
             onClick = {
-                navigateToSettings()
+                navController.navigate(ROUTE_ACADEMICS)
                 closeDrawer()
             },
             icon = { Icon(imageVector = Icons.Default.Person, contentDescription = null) },
@@ -78,13 +86,14 @@ fun AppDrawer(
         NavigationDrawerItem(
             label = {
                 Text(
-                    text = "Academics",
-                    style = MaterialTheme.typography.labelSmall
+                    text = "Sports",
+                    style = MaterialTheme.typography.labelLarge
                 )
             },
-            selected = route == AllDestinations.ACADEMICS,
+            selected = true,
+
             onClick = {
-                navigateToSettings()
+                navController.navigate(ROUTE_SPORT)
                 closeDrawer()
             },
             icon = { Icon(imageVector = Icons.Default.Person, contentDescription = null) },
@@ -111,6 +120,8 @@ fun DrawerHeader(modifier: Modifier) {
             contentScale = ContentScale.Crop,
             modifier = modifier
                 .clip(CircleShape)
+                .clickable {}
+
         )
         Spacer(modifier = Modifier.height(30.dp))
 
@@ -126,5 +137,5 @@ fun DrawerHeader(modifier: Modifier) {
 @Preview
 @Composable
 fun DrawerHeaderPreview() {
-    AppDrawer(modifier = Modifier, route = AllDestinations.HOME)
+    AppDrawer(rememberNavController(), route = AppNavHost().toString())
 }

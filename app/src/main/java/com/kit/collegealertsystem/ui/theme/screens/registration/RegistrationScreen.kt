@@ -2,6 +2,7 @@ package com.kit.collegealertsystem.ui.theme.screens.registration
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -43,6 +44,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.kit.collegealertsystem.data.AuthViewModel
 import com.kit.collegealertsystem.navigation.ROUTE_LOGIN
 import com.kit.collegealertsystem.navigation.ROUTE_REGISTER
 
@@ -50,7 +52,7 @@ import com.kit.collegealertsystem.navigation.ROUTE_REGISTER
 fun RegistrationScreen(navController: NavHostController) {
     var email by remember { mutableStateOf(TextFieldValue("")) }
     var pass by remember { mutableStateOf(TextFieldValue("")) }
-    var name by remember { mutableStateOf(TextFieldValue("")) }
+    //var name by remember { mutableStateOf(TextFieldValue("")) }
     var confirmpass by remember { mutableStateOf(TextFieldValue("")) }
     var context= LocalContext.current
     val largeRadialGradient = object : ShaderBrush() {
@@ -71,38 +73,40 @@ fun RegistrationScreen(navController: NavHostController) {
     )
     Column(modifier = Modifier
         .fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally) {
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
 
         Text(text = "Sign Up",
-            color = Color.Cyan,
+            color = Color.Black,
             fontFamily = FontFamily.SansSerif,
-            fontSize = 30.sp
+            fontSize = 40.sp
         )
 
-        Spacer(modifier = Modifier.height(20.dp))
+//        Spacer(modifier = Modifier.height(20.dp))
 
-        OutlinedTextField(
-            value = name,
-            onValueChange = { name = it },
-            leadingIcon = {
-                Icon(
-                    imageVector = Icons.Default.Person,
-                    contentDescription = "email"
-                )
-            },
-            label = { Text(
-                text = "Enter Full Name",
-                fontFamily = FontFamily.SansSerif,
-                color = Color.Black,
-                fontSize = 20.sp,
-                fontWeight = FontWeight.SemiBold
-            ) },
-
-            keyboardOptions = KeyboardOptions . Default . copy (imeAction = ImeAction.Next),
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(8.dp),
-        )
+//        OutlinedTextField(
+//            value = name,
+//            onValueChange = { name = it },
+//            leadingIcon = {
+//                Icon(
+//                    imageVector = Icons.Default.Person,
+//                    contentDescription = "email"
+//                )
+//            },
+//            label = { Text(
+//                text = "Enter Full Name",
+//                fontFamily = FontFamily.SansSerif,
+//                color = Color.Black,
+//                fontSize = 20.sp,
+//                fontWeight = FontWeight.SemiBold
+//            ) },
+//
+//            keyboardOptions = KeyboardOptions . Default . copy (imeAction = ImeAction.Next),
+//            modifier = Modifier
+//                .fillMaxWidth()
+//                .padding(8.dp),
+//        )
 
         Spacer(modifier = Modifier.height(20.dp))
 
@@ -181,9 +185,9 @@ fun RegistrationScreen(navController: NavHostController) {
         Spacer(modifier = Modifier.height(20.dp))
 
         Button(onClick = {
-//            val myregister=
-//                AuthViewModel(navController,context)
-//            myregister.signup(email.text.trim(),pass.text.trim(),confirmpass.text.trim())
+            val myregister=
+                AuthViewModel(navController,context)
+            myregister.signup(email.text.trim(),pass.text.trim(),confirmpass.text.trim())
 
         }, modifier = Modifier.fillMaxWidth()) {
             Text(text = "Register ")

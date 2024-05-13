@@ -15,9 +15,11 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavHostController
 import com.kit.collegealertsystem.R
+import com.kit.collegealertsystem.navigation.ROUTE_CLUBS
 import com.kit.collegealertsystem.navigation.ROUTE_HOME
 import com.kit.collegealertsystem.navigation.ROUTE_LOGIN
 import com.kit.collegealertsystem.navigation.ROUTE_REGISTER
+import com.kit.collegealertsystem.navigation.ROUTE_SPORT
 import kotlinx.coroutines.delay
 
 @Composable
@@ -26,28 +28,36 @@ fun SplashScreen(navController: NavHostController) {
         Animatable(0f)
     }
 
-    // AnimationEffect
     LaunchedEffect(key1 = true) {
         scale.animateTo(
             targetValue = 0.7f,
             animationSpec = tween(
-                durationMillis = 800,
+                durationMillis = 400,
                 easing = {
                     OvershootInterpolator(4f).getInterpolation(it)
                 }
             )
         )
         delay(3000L)
-        navController.navigate(ROUTE_HOME)
+        navController.navigate(ROUTE_LOGIN)
     }
 
+    // AnimationEffect
+
+
     // Image
-    Box(contentAlignment = Alignment.Center,
-        modifier = Modifier.fillMaxSize()
+    Box(modifier = Modifier.fillMaxSize()
     ) {
-        Image(painter = painterResource(id = R.drawable.icon),
+
+        Image(
+            painter = painterResource(id = R.drawable.kit),
             contentDescription = "Logo",
-            modifier = Modifier.scale(scale.value)
+            modifier = Modifier
+                .scale(scale.value)
+                .fillMaxSize()
+
         )
+
     }
 }
+

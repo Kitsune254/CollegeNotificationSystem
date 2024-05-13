@@ -1,7 +1,10 @@
 package com.kit.collegealertsystem.ui.theme.screens.login
 
+import android.app.ProgressDialog
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -46,6 +49,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.kit.collegealertsystem.data.AuthViewModel
+import com.kit.collegealertsystem.navigation.ROUTE_HOME
 import com.kit.collegealertsystem.navigation.ROUTE_REGISTER
 
 @Composable
@@ -66,19 +71,36 @@ fun LoginScreen(navController: NavHostController) {
             )
         }
     }
+    var authRepository: AuthViewModel
+    var progress: ProgressDialog
+
+    authRepository = AuthViewModel(navController, context)
+    if (authRepository.isloggedin()) {
+        navController.navigate(ROUTE_HOME)
+    }
+    progress = ProgressDialog(context)
+    progress.setTitle("Loading")
+    progress.setMessage("Please wait...")
+
+    BackHandler {
+        navController.popBackStack()
+    }
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(largeRadialGradient)
     )
-    Column(modifier = Modifier
+    Column(
+        modifier = Modifier
         .fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally) {
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
 
         Text(text = "Login",
-            color = Color.Cyan,
+            color = Color.Black,
             fontFamily = FontFamily.SansSerif,
-            fontSize = 30.sp
+            fontSize = 40.sp
         )
 
         Spacer(modifier = Modifier.height(20.dp))
@@ -113,7 +135,7 @@ fun LoginScreen(navController: NavHostController) {
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Default.Lock,
-                    contentDescription = "email"
+                    contentDescription = "password"
                 )
             },
             label = { Text(
@@ -154,8 +176,8 @@ fun LoginScreen(navController: NavHostController) {
         Spacer(modifier = Modifier.height(20.dp))
 
         Button(onClick = {
-//            val mylogin= AuthViewModel(navController, context )
-//            mylogin.login(email.text.trim(),pass.text.trim())
+            val mylogin= AuthViewModel(navController, context )
+            mylogin.login(email.text.trim(),pass.text.trim())
         }, modifier = Modifier.fillMaxWidth()
 //            .background(Color(0xFF243484))
         ) {

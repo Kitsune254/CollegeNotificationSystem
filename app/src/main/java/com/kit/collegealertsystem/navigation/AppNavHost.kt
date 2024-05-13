@@ -13,6 +13,7 @@ import com.kit.collegealertsystem.ui.theme.screens.community.CommunityScreen
 import com.kit.collegealertsystem.ui.theme.screens.home.HomeScreen
 import com.kit.collegealertsystem.ui.theme.screens.login.LoginScreen
 import com.kit.collegealertsystem.ui.theme.screens.notices.NoticesScreen
+import com.kit.collegealertsystem.ui.theme.screens.profile.ProfileScreen
 import com.kit.collegealertsystem.ui.theme.screens.registration.RegistrationScreen
 import com.kit.collegealertsystem.ui.theme.screens.splash.SplashScreen
 import com.kit.collegealertsystem.ui.theme.screens.sports.SportsScreen
@@ -50,6 +51,11 @@ fun AppNavHost(modifier: Modifier= Modifier,
         composable(ROUTE_SPLASH){
             SplashScreen(navController)
         }
-
+        composable(ROUTE_DRAWER){
+            AppDrawer(navController, route = AppNavHost().toString())
+        }
+        composable(ROUTE_PROFILE){
+            ProfileScreen(navController)
+        }
     }
 }

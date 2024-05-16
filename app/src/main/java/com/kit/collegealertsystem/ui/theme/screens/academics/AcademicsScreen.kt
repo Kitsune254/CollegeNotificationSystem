@@ -7,6 +7,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -22,9 +23,12 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Create
+import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Place
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Card
 import androidx.compose.material3.Divider
@@ -96,7 +100,7 @@ fun AcademicsScreen(navController: NavHostController,
                     label = {
                         Text(
                             text = "Home",
-                            style = MaterialTheme.typography.labelLarge,
+                            style = MaterialTheme.typography.labelMedium,
                             fontSize = 30.sp
                         )
                     },
@@ -110,14 +114,14 @@ fun AcademicsScreen(navController: NavHostController,
                         }
                         //closeDrawer()
                     },
-                    //icon = { Icon(imageVector = Icons.Default.Home, contentDescription = null) },
+                    icon = { Icon(imageVector = Icons.Default.Home, contentDescription = null) },
                     shape = MaterialTheme.shapes.small
                 )
                 NavigationDrawerItem(
                     label = {
                         Text(
                             text = "Academics",
-                            style = MaterialTheme.typography.labelLarge,
+                            style = MaterialTheme.typography.labelMedium,
                             fontSize = 30.sp
                         )
                     },
@@ -131,14 +135,14 @@ fun AcademicsScreen(navController: NavHostController,
                         }
                         //closeDrawer()
                     },
-                    //icon = { Icon(imageVector = Icons.Default.Create, contentDescription = null) },
+                    icon = { Icon(imageVector = Icons.Default.Create, contentDescription = null) },
                     shape = MaterialTheme.shapes.small
                 )
                 NavigationDrawerItem(
                     label = {
                         Text(
                             text = "Clubs",
-                            style = MaterialTheme.typography.labelLarge,
+                            style = MaterialTheme.typography.labelMedium,
                             fontSize = 30.sp
                         )
                     },
@@ -152,14 +156,14 @@ fun AcademicsScreen(navController: NavHostController,
                         }
                         //closeDrawer()
                     },
-                    //icon = { Icon(imageVector = Icons.Default.Home, contentDescription = null) },
+                    icon = { Icon(imageVector = Icons.Default.Place, contentDescription = null) },
                     shape = MaterialTheme.shapes.small
                 )
                 NavigationDrawerItem(
                     label = {
                         Text(
                             text = "Sports",
-                            style = MaterialTheme.typography.labelLarge,
+                            style = MaterialTheme.typography.labelMedium,
                             fontSize = 30.sp
                         )
                     },
@@ -173,14 +177,14 @@ fun AcademicsScreen(navController: NavHostController,
                         }
                         //closeDrawer()
                     },
-                    //icon = { Icon(imageVector = Icons.Default.Home, contentDescription = null) },
+                    icon = { Icon(imageVector = Icons.Default.Star, contentDescription = null) },
                     shape = MaterialTheme.shapes.small
                 )
                 NavigationDrawerItem(
                     label = {
                         Text(
                             text = "Community",
-                            style = MaterialTheme.typography.labelLarge,
+                            style = MaterialTheme.typography.labelMedium,
                             fontSize = 30.sp
                         )
                     },
@@ -194,7 +198,7 @@ fun AcademicsScreen(navController: NavHostController,
                         }
                         //closeDrawer()
                     },
-                    //icon = { Icon(imageVector = Icons.Default.Home, contentDescription = null) },
+                    icon = { Icon(imageVector = Icons.Default.Face, contentDescription = null) },
                     shape = MaterialTheme.shapes.small
                 )
             }
@@ -244,15 +248,20 @@ fun AcademicsScreen(navController: NavHostController,
                                 .fillMaxSize()
                                 .size(width = 150.dp, height = 300.dp)
                         ) {
-                            FirebaseImage(
-                                imagePath = "images/exam.jpg",
-                                modifier = Modifier.fillMaxSize(),
-                            )
+                            Box {
+                                FirebaseImage(
+                                    imagePath = "images/exam.jpg",
+                                    modifier = Modifier.fillMaxSize(),
+                                )
 
-                            Text(text = "Exams",
-                                fontWeight = FontWeight.Bold,
-                                fontSize = 30.sp
-                            )
+                                Box {
+                                    Text(
+                                        text = "Exams",
+                                        fontWeight = FontWeight.Bold,
+                                        fontSize = 30.sp,
+                                    )
+                                }
+                            }
 
                         }
                         Spacer(modifier = Modifier.height(30.dp))
@@ -267,14 +276,18 @@ fun AcademicsScreen(navController: NavHostController,
                                 .fillMaxWidth()
                                 .size(width = 150.dp, height = 300.dp)
                         ) {
-                            FirebaseImage(
-                                imagePath = "images/project.jpg",
-                                modifier = Modifier.fillMaxSize(),
-                            )
-                            Text(text = "Project",
-                                fontWeight = FontWeight.Bold,
-                                fontSize = 30.sp
-                            )
+                            Box {
+                                FirebaseImage(
+                                    imagePath = "images/project.jpg",
+                                    modifier = Modifier.fillMaxSize(),
+                                )
+                                Box {
+                                    Text(text = "Project",
+                                        fontWeight = FontWeight.Bold,
+                                        fontSize = 30.sp
+                                    )
+                                }
+                            }
                         }
                         Spacer(modifier = Modifier.height(30.dp))
 
@@ -288,14 +301,18 @@ fun AcademicsScreen(navController: NavHostController,
                                 .fillMaxWidth()
                                 .size(width = 150.dp, height = 300.dp)
                         ) {
-                            FirebaseImage(
-                                imagePath = "images/extracredit.jpg",
-                                modifier = Modifier.fillMaxSize(),
-                            )
-                            Text(text = "Extra Credit",
-                                fontWeight = FontWeight.Bold,
-                                fontSize = 30.sp
-                            )
+                            Box {
+                                FirebaseImage(
+                                    imagePath = "images/extracredit.jpg",
+                                    modifier = Modifier.fillMaxSize(),
+                                )
+                                Box {
+                                    Text(text = "Extra Credit",
+                                        fontWeight = FontWeight.Bold,
+                                        fontSize = 30.sp
+                                    )
+                                }
+                            }
                         }
                         Spacer(modifier = Modifier.height(30.dp))
 
@@ -309,14 +326,18 @@ fun AcademicsScreen(navController: NavHostController,
                                 .fillMaxWidth()
                                 .size(width = 150.dp, height = 300.dp)
                         ) {
-                            FirebaseImage(
-                                imagePath = "images/essays.jpg",
-                                modifier = Modifier.fillMaxSize(),
-                            )
-                            Text(text = "Essays",
-                                fontWeight = FontWeight.Bold,
-                                fontSize = 30.sp
-                            )
+                            Box {
+                                FirebaseImage(
+                                    imagePath = "images/essays.jpg",
+                                    modifier = Modifier.fillMaxSize(),
+                                )
+                                Box {
+                                    Text(text = "Essays",
+                                        fontWeight = FontWeight.Bold,
+                                        fontSize = 30.sp
+                                    )
+                                }
+                            }
                         }
 //                    Row (
 //                        modifier = modifier
@@ -364,7 +385,7 @@ fun DrawerHeader(modifier: Modifier) {
     ) {
 
         Image(
-            painterResource(id = R.drawable.icon),
+            painterResource(id = R.drawable.logo3),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = modifier
@@ -379,6 +400,7 @@ fun DrawerHeader(modifier: Modifier) {
             textAlign = TextAlign.Center,
             style = MaterialTheme.typography.bodyLarge,
             color = MaterialTheme.colorScheme.onPrimary,
+            fontSize = 20.sp
         )
     }
 }

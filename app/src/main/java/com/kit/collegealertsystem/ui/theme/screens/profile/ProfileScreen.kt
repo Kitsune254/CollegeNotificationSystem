@@ -167,14 +167,7 @@ fun ProfileScreen(navController: NavHostController,
     )
 }
 
-//@Composable
-//fun ProfileScreen() {
-//    // Replace "profile_images/user123.jpg" with the actual path to the user's profile photo
-//    val imagePath = "profile_images/user123.jpg"
-//
-//    // Display the profile photo
-//    ProfilePhoto(imagePath = imagePath)
-//}
+
 
 @Composable
 fun ImagePicker(modifier: Modifier = Modifier, context: Context ) {
@@ -212,7 +205,7 @@ fun ImagePicker(modifier: Modifier = Modifier, context: Context ) {
             Button(onClick = {
                 //-----------WRITE THE UPLOAD LOGIC HERE---------------//
                 var productRepository = UploadViewModel()
-                productRepository.uploadImage(imageUri!!.toString())
+                productRepository.saveProductWithImage(imageUri!!)
 
             }
             ) {

@@ -12,7 +12,6 @@ import com.kit.collegealertsystem.ui.theme.screens.clubs.ClubScreen
 import com.kit.collegealertsystem.ui.theme.screens.community.CommunityScreen
 import com.kit.collegealertsystem.ui.theme.screens.home.HomeScreen
 import com.kit.collegealertsystem.ui.theme.screens.login.LoginScreen
-import com.kit.collegealertsystem.ui.theme.screens.notices.NoticesScreen
 import com.kit.collegealertsystem.ui.theme.screens.profile.ProfileScreen
 import com.kit.collegealertsystem.ui.theme.screens.registration.RegistrationScreen
 import com.kit.collegealertsystem.ui.theme.screens.splash.SplashScreen
@@ -38,9 +37,6 @@ fun AppNavHost(modifier: Modifier= Modifier,
         }
         composable(ROUTE_CLUBS){
             ClubScreen(navController)
-        }
-        composable(ROUTE_NOTICES){
-            NoticesScreen(navController)
         }
         composable(ROUTE_COMMUNITY){
             CommunityScreen(navController)

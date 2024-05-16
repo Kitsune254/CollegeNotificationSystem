@@ -57,7 +57,7 @@ fun AppDrawer(
             label = {
                 Text(
                     text = "Home Page",
-                    style = MaterialTheme.typography.labelSmall
+                    style = MaterialTheme.typography.labelMedium
                 )
             },
             selected = false,
@@ -72,7 +72,7 @@ fun AppDrawer(
             label = {
                 Text(
                     text = "Academics",
-                    style = MaterialTheme.typography.labelSmall
+                    style = MaterialTheme.typography.labelLarge
                 )
             },
             selected = true,

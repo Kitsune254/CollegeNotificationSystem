@@ -25,8 +25,11 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Create
+import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.Place
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Card
 import androidx.compose.material3.Divider
 import androidx.compose.material3.DrawerValue
@@ -95,7 +98,7 @@ fun SportsScreen(navController: NavHostController,
                     label = {
                         Text(
                             text = "Home",
-                            style = MaterialTheme.typography.labelLarge,
+                            style = MaterialTheme.typography.labelMedium,
                             fontSize = 30.sp
                         )
                     },
@@ -109,14 +112,14 @@ fun SportsScreen(navController: NavHostController,
                         }
                         //closeDrawer()
                     },
-                    //icon = { Icon(imageVector = Icons.Default.Home, contentDescription = null) },
+                    icon = { Icon(imageVector = Icons.Default.Home, contentDescription = null) },
                     shape = MaterialTheme.shapes.small
                 )
                 NavigationDrawerItem(
                     label = {
                         Text(
                             text = "Academics",
-                            style = MaterialTheme.typography.labelLarge,
+                            style = MaterialTheme.typography.labelMedium,
                             fontSize = 30.sp
                         )
                     },
@@ -130,14 +133,14 @@ fun SportsScreen(navController: NavHostController,
                         }
                         //closeDrawer()
                     },
-                    //icon = { Icon(imageVector = Icons.Default.Create, contentDescription = null) },
+                    icon = { Icon(imageVector = Icons.Default.Create, contentDescription = null) },
                     shape = MaterialTheme.shapes.small
                 )
                 NavigationDrawerItem(
                     label = {
                         Text(
                             text = "Clubs",
-                            style = MaterialTheme.typography.labelLarge,
+                            style = MaterialTheme.typography.labelMedium,
                             fontSize = 30.sp
                         )
                     },
@@ -151,14 +154,14 @@ fun SportsScreen(navController: NavHostController,
                         }
                         //closeDrawer()
                     },
-                    //icon = { Icon(imageVector = Icons.Default.Home, contentDescription = null) },
+                    icon = { Icon(imageVector = Icons.Default.Place, contentDescription = null) },
                     shape = MaterialTheme.shapes.small
                 )
                 NavigationDrawerItem(
                     label = {
                         Text(
                             text = "Sports",
-                            style = MaterialTheme.typography.labelLarge,
+                            style = MaterialTheme.typography.labelMedium,
                             fontSize = 30.sp
                         )
                     },
@@ -172,14 +175,14 @@ fun SportsScreen(navController: NavHostController,
                         }
                         //closeDrawer()
                     },
-                    //icon = { Icon(imageVector = Icons.Default.Home, contentDescription = null) },
+                    icon = { Icon(imageVector = Icons.Default.Star, contentDescription = null) },
                     shape = MaterialTheme.shapes.small
                 )
                 NavigationDrawerItem(
                     label = {
                         Text(
                             text = "Community",
-                            style = MaterialTheme.typography.labelLarge,
+                            style = MaterialTheme.typography.labelMedium,
                             fontSize = 30.sp
                         )
                     },
@@ -193,7 +196,7 @@ fun SportsScreen(navController: NavHostController,
                         }
                         //closeDrawer()
                     },
-                    //icon = { Icon(imageVector = Icons.Default.Home, contentDescription = null) },
+                    icon = { Icon(imageVector = Icons.Default.Face, contentDescription = null) },
                     shape = MaterialTheme.shapes.small
                 )
             }
@@ -244,15 +247,18 @@ fun SportsScreen(navController: NavHostController,
                                 .fillMaxSize()
                                 .size(width = 150.dp, height = 300.dp)
                         ) {
-                            FirebaseImage(
-                                imagePath = "images/futa.webp",
-                                modifier = Modifier.fillMaxSize(),
-
-                            )
-                            Text(text = "Football",
-                                fontWeight = FontWeight.Bold,
-                                fontSize = 30.sp
-                            )
+                            Box {
+                                FirebaseImage(
+                                    imagePath = "images/futa.webp",
+                                    modifier = Modifier.fillMaxSize()
+                                )
+                                Box {
+                                    Text(text = "Football",
+                                        fontWeight = FontWeight.Bold,
+                                        fontSize = 30.sp
+                                    )
+                                }
+                            }
 
                         }
                         Spacer(modifier = Modifier.height(30.dp))
@@ -267,14 +273,18 @@ fun SportsScreen(navController: NavHostController,
                                 .fillMaxWidth()
                                 .size(width = 150.dp, height = 300.dp)
                         ) {
-                            FirebaseImage(
-                                imagePath = "images/basket.jpg",
-                                modifier = Modifier.fillMaxSize(),
-                            )
-                            Text(text = "Basketball",
-                                fontWeight = FontWeight.Bold,
-                                fontSize = 30.sp
-                            )
+                            Box {
+                                FirebaseImage(
+                                    imagePath = "images/basket.jpg",
+                                    modifier = Modifier.fillMaxSize(),
+                                )
+                                Box {
+                                    Text(text = "Basketball",
+                                        fontWeight = FontWeight.Bold,
+                                        fontSize = 30.sp
+                                    )
+                                }
+                            }
                         }
                         Spacer(modifier = Modifier.height(30.dp))
 
@@ -288,14 +298,18 @@ fun SportsScreen(navController: NavHostController,
                                 .fillMaxWidth()
                                 .size(width = 150.dp, height = 300.dp)
                         ) {
-                            FirebaseImage(
-                                imagePath = "images/rugby.jpg",
-                                modifier = Modifier.fillMaxSize(),
-                            )
-                            Text(text = "Rugby",
-                                fontWeight = FontWeight.Bold,
-                                fontSize = 30.sp
-                            )
+                            Box {
+                                FirebaseImage(
+                                    imagePath = "images/rugby.jpg",
+                                    modifier = Modifier.fillMaxSize(),
+                                )
+                                Box {
+                                    Text(text = "Rugby",
+                                        fontWeight = FontWeight.Bold,
+                                        fontSize = 30.sp
+                                    )
+                                }
+                            }
                         }
                         Spacer(modifier = Modifier.height(30.dp))
 
@@ -309,14 +323,18 @@ fun SportsScreen(navController: NavHostController,
                                 .fillMaxWidth()
                                 .size(width = 150.dp, height = 300.dp)
                         ) {
-                            FirebaseImage(
-                                imagePath = "images/tennis.jpg",
-                                modifier = Modifier.fillMaxSize(),
-                            )
-                            Text(text = "Tennis",
-                                fontWeight = FontWeight.Bold,
-                                fontSize = 30.sp
-                            )
+                            Box {
+                                FirebaseImage(
+                                    imagePath = "images/tennis.jpg",
+                                    modifier = Modifier.fillMaxSize(),
+                                )
+                                Box {
+                                    Text(text = "Tennis",
+                                        fontWeight = FontWeight.Bold,
+                                        fontSize = 30.sp
+                                    )
+                                }
+                            }
                         }
 //                    Row (
 //                        modifier = modifier
@@ -364,7 +382,7 @@ fun DrawerHeader(modifier: Modifier) {
     ) {
 
         Image(
-            painterResource(id = R.drawable.icon),
+            painterResource(id = R.drawable.logo3),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = modifier
@@ -379,6 +397,7 @@ fun DrawerHeader(modifier: Modifier) {
             textAlign = TextAlign.Center,
             style = MaterialTheme.typography.bodyLarge,
             color = MaterialTheme.colorScheme.onPrimary,
+            fontSize = 20.sp
         )
     }
 }
